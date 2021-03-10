@@ -1,5 +1,6 @@
 {
   "name": "blog27",
+  "type": "module",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "kczapla <k.czapla68@gmail.com>",
@@ -15,6 +16,11 @@
     "dist"
   ],
   "scripts": {
+    "start": "node src/app.mjs",
     "test": "echo \"Error: run tests from root\" && exit 0"
+  },
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0"
   }
 }
