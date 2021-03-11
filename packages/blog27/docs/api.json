@@ -1,0 +1,134 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+      "title": "blog27 api",
+      "version": "0.1"
+    },
+    "servers": [
+      {
+        "url": "https://localhost:3000/v1",
+        "description": "Local developemnt server"
+      }
+    ],
+    "paths": {
+      "/posts/{id}": {
+        "get": {
+          "summary": "Returns a post by ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "description": "The post ID."
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A post object.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 4
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Hey yo doctor"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Eric Wright"
+                          }
+                        }
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "this post about the song from 90s"
+                      },
+                      "comments": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 1
+                            },
+                            "author": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": 1
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Bob Iksinski"
+                                }
+                              }
+                            },
+                            "date": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "content": {
+                              "type": "string",
+                              "example": "wow, interesting"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "The specified post ID is invalid (e.g. not a number)."
+            },
+            "404": {
+              "description": "A post with specified ID was not found."
+            }
+          }
+        }
+      },
+      "/posts": {
+        "get": {
+          "summary": "Returns list of posts",
+          "responses": {
+            "200": {
+              "description": "A JSON array of posts.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
