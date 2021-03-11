@@ -1,11 +1,13 @@
 import Router from 'koa-router'
-import makePostRouter from './post/router.mjs'
-import PostController from './post/controller.mjs'
+import { makePostRouter, PostController } from './post'
 
-const router = new Router({
-    prefix: '/api'
-})
+function makeApiRouter() {
+    const router = new Router({
+        prefix: '/api'
+    })
+    
+    router.use(makePostRouter(new PostController).routes())
+    return router
+}
 
-router.use(makePostRouter(new PostController).routes())
-
-export default router
+export default makeApiRouter

@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "node src/app.mjs",
+    "start": "node --es-module-specifier-resolution=node src/app.mjs",
     "test": "echo \"Error: run tests from root\" && exit 0"
   },
   "dependencies": {
