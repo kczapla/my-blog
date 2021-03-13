@@ -17,6 +17,6 @@ export function makeDocsRouter() {
 
 export function makeDocsUiRouter() {
     const router = new Router()
-    router.get('/docs-ui', koaSwagger({routePrefix: false, swaggerOptions: {url: 'http://localhost:3000/api/docs'}}))
+    router.get('/docs-ui', koaSwagger({routePrefix: false, swaggerOptions: {url: 'http://localhost:3000/api/v0/docs'}}))
     return router
 }
